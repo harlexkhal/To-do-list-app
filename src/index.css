@@ -1,5 +1,5 @@
-body{
-  margin-top:20px;
+body {
+  margin-top: 20px;
   background: #f8f8f8;
 }
 
@@ -16,11 +16,11 @@ body{
 }
 
 .add-task {
- font-style: italic;
+  font-style: italic;
 }
 
 .done-task {
-  text-decoration: line-through
+  text-decoration: line-through;
 }
 
 div.checker input {
@@ -38,8 +38,6 @@ div.checker {
   position: relative;
   margin-right: 10px;
   padding: 0;
-  display: inline-block;
-  zoom: 1;
   vertical-align: middle;
 }
 
@@ -48,8 +46,8 @@ div.checker {
   margin-bottom: 20px;
   border: initial;
   background: #fff;
-  border-radius: calc(.15rem - 1px);
-  box-shadow: 0 1px 15px rgba(0,0,0,0.04), 0 1px 6px rgba(0,0,0,0.04);
+  border-radius: calc(0.15rem - 1px);
+  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
 }
 
 .custom-btn {
