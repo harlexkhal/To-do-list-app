@@ -1,0 +1,55 @@
+body {
+  margin-top: 20px;
+  background: #f8f8f8;
+}
+
+.todo-list {
+  list-style: none;
+  margin-left: -42px;
+}
+
+.todo-item {
+  padding: 15px;
+  margin: 5px 0;
+  border-radius: 0;
+  background: #f7f7f7;
+}
+
+.add-task {
+  font-style: italic;
+}
+
+.done-task {
+  text-decoration: line-through;
+}
+
+div.checker input {
+  width: 18px;
+  height: 18px;
+}
+
+div.checker {
+  display: inline-block;
+  zoom: 1;
+  text-align: center;
+  background-position: 0 -260px;
+  width: 19px;
+  height: 19px;
+  position: relative;
+  margin-right: 10px;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.card {
+  padding: 25px;
+  margin-bottom: 20px;
+  border: initial;
+  background: #fff;
+  border-radius: calc(0.15rem - 1px);
+  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
+}
+
+.custom-btn {
+  width: 100%;
+}
