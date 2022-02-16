@@ -1,5 +1,5 @@
 {
-  "name": "Awesome-books",
+  "name": "To-do-list-app",
   "version": "1.0.0",
   "description": "> This is a team project being built in our second module of our curriculum at microverse. its a book application were you are able to add and remove book to a list",
   "main": "script.js",
@@ -96,13 +96,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/L2oukmane/Awesome-books.git"
+    "url": "git+https://github.com/harlexkhal/To-do-list-app.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/L2oukmane/Awesome-books/issues"
+    "url": "https://github.com/harlexkhal/To-do-list-app/issues"
   },
-  "homepage": "https://github.com/L2oukmane/Awesome-books#readme"
+  "homepage": "https://github.com/harlexkhal/To-do-list-app#readme"
 }

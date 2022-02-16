@@ -1,16 +1,14 @@
-# AWESOME-BOOKS | MODULE-II
+# To-do-list-app | MODULE-II
 
-> This is a team project being built in our second module of our curriculum at microverse. its a book application were you are able to add and remove book to a list
+> This is a solo project being built in our second module of our curriculum at microverse. its a to-do list application were you are able to add and remove and mark completed tasks
 
-Our goal here is to Build a book application with add and remove feature from scratch using JavaScripts. click [here](https://harlexkhal.github.io/Awesome-books/) to see deployed live version
+Our goal here is to Build a book application with add and remove feature from scratch using JavaScripts. click [here](https://harlexkhal.github.io//) to see deployed live version
 
 ### Features implemented so far are:
 
 - Responsive HTML page
-- Add book feature
-- Remove book feature
-- Saving current state of book list to local storage
-- Live date and time update using luxos library
+- Integrated webpack
+- dynamic to-do list dom manipulation
 
 ## Built With
 
@@ -18,7 +16,7 @@ Our goal here is to Build a book application with add and remove feature from sc
 - Webhint (A customizable linting tool that helps you improve your site's accessibility, speed, cross-browser compatibility, and more by checking your code for best practices and common errors).
 - Stylelint (A mighty, modern linter that helps you avoid errors and enforce conventions in your styles).
 - ESlint (A mighty, modern linter that helps you avoid errors and enforce conventions in JavaScript codes)
-- Luxos (A library for dealing with dates and times in JavaScript.)
+- Webpack (Used for bundling JavaScript files for usage in a browser)
 
 To get a local copy up and running follow these simple example steps.
 
@@ -35,51 +33,31 @@ The basic requirements for building the executable are:
 #### Cloning the project
 
 ```
-git clone  https://github.com/harlexkhal/Awesome-books <Your-Build-Directory>
+git clone  https://github.com/harlexkhal/To-do-list-app <Your-Build-Directory>
 ```
 
-## Getting packages and debuging with Stylelint
-
+## Getting packages and dependencies
+To get all package modules required to build the project run:
 ```
-npm install --save-dev stylelint@13.x stylelint-scss@3.x stylelint-config-standard@21.x stylelint-csstree-validator@1.x
+npm install
 ```
+every package module required to build the project is listed in the package.json file. this is used as a reference to get all dependencies.
 
-##### For validation detection using Stylelint Run
+## Building 
 
+To build the project run:
 ```
-npx stylelint "**/*.{css,scss}"
+npm run-script build
 ```
+after you run this sucessfully you'd locate the build from in the ```dist``` folder located from the parent directory of the project. two files are being built which are, ```core.js and index.html``
 
-##### from parent source directory
+## Running
 
-## Getting packages and debuging with ESlint
-
+To run the program on a browser through a server run this command in your cli
 ```
-npm install --save-dev eslint@7.x eslint-config-airbnb-base@14.x eslint-plugin-import@2.x babel-eslint@10.x
+npm start
 ```
-
-##### For validation detection using Stylelint Run
-
-```
-npx eslint .
-```
-
-##### from parent source directory
-
-## Getting packages and debuging with Webhint
-
-```
-npm init -y
-npm install --save-dev hint@6.x
-```
-
-##### For validation detection using Webhint Run
-
-```
-npx hint .
-```
-
-##### from parent source directory
+This should open the page in your localhost on port 8080. then you'd be able to view the built page generated using webpack.
 
 ## License
 
