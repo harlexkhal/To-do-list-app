@@ -50,7 +50,7 @@ To build the project run:
 ```
 npm run-script build
 ```
-after you run this sucessfully you'd locate the build from in the ```dist``` folder located from the parent directory of the project. two files are being built which are, ```core.js and index.html``
+after you run this sucessfully you'd locate the build from in the ```dist``` folder located from the parent directory of the project. two files are being built which are, ```core.js and index.html```
 
 ## Running
 
