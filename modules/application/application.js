@@ -9,7 +9,9 @@ class Application {
       { index: 5, description: 'Implement drag and drop feature', completed: false },
       { index: 6, description: 'submit project for review', completed: false },
     ];
+  }
 
+  initApp = () => {
     const ref = this;
     this.todoList.forEach((element) => {
       let completed = '';
