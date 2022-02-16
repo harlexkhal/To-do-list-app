@@ -3,7 +3,7 @@
 > This is a solo project being built in our second module of our curriculum at microverse. its a to-do list application were you are able to add and remove and mark completed tasks
 ![screenshot](assets/demo.png)
 
-Our goal here is to Build a book application with add and remove feature from scratch using JavaScripts. click [here](https://harlexkhal.github.io/To-do-list-app/) to see deployed live version
+Our goal here is to Build a To-do list application with add, remove and checked feature from scratch using JavaScripts. click [here](https://harlexkhal.github.io/To-do-list-app/) to see deployed live version
 
 ### Features implemented so far are:
 
