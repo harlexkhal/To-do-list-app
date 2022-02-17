@@ -39,7 +39,7 @@ class Application {
   eventDispatcher = () => {
     this.onclickeventDispatcher();
     this.onsubmiteventDispatcher();
-    this.onfocusouteventDispatcher();
+    this.onediteventDispatcher();
   }
 
   onclickeventDispatcher = () => {
@@ -49,14 +49,14 @@ class Application {
       button.addEventListener('click', (event) => {
         const eventIdentifier = event.currentTarget;
         const localArray = [];
-        let count = 0;
-        for (let i = 0; i < eventIdentifier.ref.todoList.length; i += 1) {
+        let count = 1;
+        eventIdentifier.ref.todoList.forEach((element, i) => {
           if (i !== eventIdentifier.index) {
             eventIdentifier.ref.todoList[i].index = count;
             localArray.push(eventIdentifier.ref.todoList[i]);
             count += 1;
           }
-        }
+        });
         eventIdentifier.ref.todoList = localArray;
         eventIdentifier.ref.onSaveList();
         ref.updateDom();
@@ -79,7 +79,7 @@ class Application {
 
       if (event.keyCode === 13) {
         event.currentTarget.ref.todoList.push({
-          index: event.currentTarget.ref.todoList.length, description: input, completed: false,
+          index: (event.currentTarget.ref.todoList.length + 1), description: input, completed: false,
         });
 
         event.currentTarget.ref.onSaveList();
@@ -91,15 +91,28 @@ class Application {
     this.addTask.ref = this;
   }
 
-  onfocusouteventDispatcher = () => {
+  onediteventDispatcher = () => {
     const ref = this;
     const listDesc = document.querySelectorAll('.desc');
     listDesc.forEach((desc, index) => {
-      desc.addEventListener('focusout', (event) => {
+      desc.addEventListener('keyup', (event) => {    
+        if (event.keyCode !== 13) {
+          return;
+        }
+
         const refObj = event.currentTarget;
+        let input = refObj.value.innerHTML;
+        refObj.value.innerHTML = input.replace('<br>', '');
+        input = refObj.value.innerHTML;
+        if (!input.replace(/\s/g, '').length || input.length <= 0) {
+          return;
+        }
+      
         if (refObj.value.innerHTML !== refObj.ref.todoList[refObj.index].description) {
+          refObj.value.innerHTML = input.replace('<br>', '');
           refObj.ref.todoList[refObj.index].description = refObj.value.innerHTML;
           refObj.ref.onSaveList();
+          refObj.value.blur();
         }
       });
       desc.index = index;
