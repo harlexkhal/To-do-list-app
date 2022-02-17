@@ -53,3 +53,7 @@ div.checker {
 .custom-btn {
   width: 100%;
 }
+
+[contenteditable] {
+  outline: 1px solid transparent;
+}
