@@ -10,6 +10,9 @@ Our goal here is to Build a To-do list application with add, remove and checked 
 - Responsive HTML page
 - Integrated webpack
 - dynamic to-do list dom manipulation
+- Add a task to list [Hit enter key to add a new task]
+- Edit a task to list [this is done on editable and hit enter key to save to list]
+- Save current state to local-storage.
 
 ## Built With
 
