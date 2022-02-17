@@ -19,7 +19,7 @@ class Application {
         completed = 'done-task';
       }
       ref.domList.innerHTML = `${ref.domList.innerHTML} <li class="todo-item">
-      <div class="checker"><span class=""><input class="list-check-${element.index}" type="checkbox"></span></div>
+      <div class="checker"><span class=""><input class="list-check-${element.index} action_check" type="checkbox"></span></div>
       <span class="${completed} desc" contentEditable="true">${element.description}</span>
       <i class="fa fa-trash-o float-right delete"></i>
       </li>`;
@@ -43,6 +43,7 @@ class Application {
   }
 
   onclickeventDispatcher = () => {
+    // delete task
     const buttons = document.querySelectorAll('.delete');
     const ref = this;
     buttons.forEach((button, index) => {
@@ -64,6 +65,37 @@ class Application {
       button.index = index;
       button.ref = ref;
     }, ref);
+
+    // check task
+    const checks = document.querySelectorAll('.action_check');
+    checks.forEach((check, index) => {
+      check.addEventListener('click', (event) => {
+        const refObj = event.currentTarget;
+        if (refObj.ref.todoList[refObj.index].completed) {
+          refObj.ref.todoList[refObj.index].completed = false;
+        } else {
+          refObj.ref.todoList[refObj.index].completed = true;
+        }
+        refObj.ref.onSaveList();
+        ref.updateDom();
+      });
+      check.index = index;
+      check.ref = ref;
+    }, ref);
+
+    // clear all completed
+    const clearBtn = document.querySelector('.custom-btn');
+    clearBtn.addEventListener('click', (event) => {
+      const refObj = event.currentTarget;
+      const filteredTasks = refObj.ref.todoList.filter((item) => {
+        const state = item.completed === false;
+        return state;
+      });
+      refObj.ref.todoList = filteredTasks;
+      refObj.ref.onSaveList();
+      ref.updateDom();
+    });
+    clearBtn.ref = this;
   }
 
   onsubmiteventDispatcher = () => {
