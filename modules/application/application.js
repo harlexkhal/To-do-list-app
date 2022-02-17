@@ -72,20 +72,21 @@ class Application {
         return;
       }
 
-      const input = event.currentTarget.ref.addTask.value;
+      const refObj = event.currentTarget;
+      const input = refObj.ref.addTask.value;
       if (!input.replace(/\s/g, '').length || input.length <= 0) {
         return;
       }
 
       if (event.keyCode === 13) {
-        event.currentTarget.ref.todoList.push({
-          index: (event.currentTarget.ref.todoList.length + 1), description: input, completed: false,
+        refObj.ref.todoList.push({
+          index: (refObj.ref.todoList.length + 1), description: input, completed: false,
         });
 
-        event.currentTarget.ref.onSaveList();
-        event.currentTarget.ref.addTask.value = '';
+        refObj.ref.onSaveList();
+        refObj.ref.addTask.value = '';
       }
-      event.currentTarget.ref.updateDom();
+      refObj.ref.updateDom();
       event.preventDefault();
     });
     this.addTask.ref = this;
@@ -95,7 +96,7 @@ class Application {
     const ref = this;
     const listDesc = document.querySelectorAll('.desc');
     listDesc.forEach((desc, index) => {
-      desc.addEventListener('keyup', (event) => {    
+      desc.addEventListener('keyup', (event) => {
         if (event.keyCode !== 13) {
           return;
         }
@@ -107,7 +108,7 @@ class Application {
         if (!input.replace(/\s/g, '').length || input.length <= 0) {
           return;
         }
-      
+
         if (refObj.value.innerHTML !== refObj.ref.todoList[refObj.index].description) {
           refObj.value.innerHTML = input.replace('<br>', '');
           refObj.ref.todoList[refObj.index].description = refObj.value.innerHTML;
