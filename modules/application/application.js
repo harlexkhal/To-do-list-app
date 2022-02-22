@@ -1,12 +1,38 @@
 class Application {
-  constructor() {
+  constructor(isTest = false) {
     this.addTask = document.querySelector('.add-task');
     this.domList = document.querySelector('.todo-list');
     this.todoList = [];
+    this.localStorageStringInstance = 'application_config';
+    this.testMode = isTest;
   }
 
   initApp = () => {
     this.onLoadList();
+    this.updateDom();
+  }
+
+  addTaskToList = (inputTask) => {
+    this.todoList.push({
+      index: (this.todoList.length + 1), description: inputTask, completed: false,
+    });
+
+    this.onSaveList();
+    this.updateDom();
+  }
+
+  deleteTask = (deleteIndex) => {
+    const localArray = [];
+    let count = 1;
+    this.todoList.forEach((element, i) => {
+      if (i !== deleteIndex) {
+        this.todoList[i].index = count;
+        localArray.push(this.todoList[i]);
+        count += 1;
+      }
+    });
+    this.todoList = localArray;
+    this.onSaveList();
     this.updateDom();
   }
 
@@ -33,7 +59,9 @@ class Application {
       }
     });
 
-    this.eventDispatcher();
+    if (this.testMode === false) {
+      this.eventDispatcher();
+    }
   }
 
   eventDispatcher = () => {
@@ -49,18 +77,7 @@ class Application {
     buttons.forEach((button, index) => {
       button.addEventListener('click', (event) => {
         const eventIdentifier = event.currentTarget;
-        const localArray = [];
-        let count = 1;
-        eventIdentifier.ref.todoList.forEach((element, i) => {
-          if (i !== eventIdentifier.index) {
-            eventIdentifier.ref.todoList[i].index = count;
-            localArray.push(eventIdentifier.ref.todoList[i]);
-            count += 1;
-          }
-        });
-        eventIdentifier.ref.todoList = localArray;
-        eventIdentifier.ref.onSaveList();
-        ref.updateDom();
+        eventIdentifier.ref.deleteTask(eventIdentifier.index);
       });
       button.index = index;
       button.ref = ref;
@@ -111,14 +128,9 @@ class Application {
       }
 
       if (event.keyCode === 13) {
-        refObj.ref.todoList.push({
-          index: (refObj.ref.todoList.length + 1), description: input, completed: false,
-        });
-
-        refObj.ref.onSaveList();
+        refObj.ref.addTaskToList(input);
         refObj.ref.addTask.value = '';
       }
-      refObj.ref.updateDom();
       event.preventDefault();
     });
     this.addTask.ref = this;
@@ -155,16 +167,18 @@ class Application {
   }
 
   onSaveList = () => {
-    localStorage.setItem('application_config', JSON.stringify(this.todoList));
+    if (this.testMode === false) {
+      localStorage.setItem(this.localStorageStringInstance, JSON.stringify(this.todoList));
+    }
   }
 
   onLoadList = () => {
-    if (localStorage.getItem('application_config') != null) {
-      this.todoList = JSON.parse(localStorage.getItem('application_config'));
+    if (this.testMode === false) {
+      if (localStorage.getItem(this.localStorageStringInstance) != null) {
+        this.todoList = JSON.parse(localStorage.getItem(this.localStorageStringInstance));
+      }
     }
   }
 }
 
-/* eslint-disable */
-export { Application };
-/* eslint-enable */
+export default Application;

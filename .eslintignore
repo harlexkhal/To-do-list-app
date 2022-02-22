@@ -1,2 +1,4 @@
 core.js
 dist/*
+testbed/*
+webpack.config.js
