@@ -11,6 +11,7 @@ describe('Add to list', () => {
         Test1.addTaskToList("TaskTest_1 of Example 1");
         Test1.addTaskToList("TaskTest_1 of Example-2");
         Test1.addTaskToList("TaskTest_1 of Example-3");
+        Test1.onSaveList();
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(3);
     });
@@ -34,11 +35,13 @@ describe('Add to list', () => {
         '</div>';
         
         const Test3 = new Application(true);
+        Test3.onLoadList();
         Test3.addTaskToList("TaskTest_3 of Example-1");
         Test3.addTaskToList("TaskTest_3 of Example-2");
         Test3.addTaskToList("TaskTest_3 of EXample-3");
         Test3.addTaskToList("TaskTest_3 of Example-4");
         Test3.addTaskToList("TaskTest_3 of Example-5");
+        Test3.onSaveList();
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(5);
     });
@@ -53,6 +56,7 @@ describe('Add to list', () => {
         Test4.addTaskToList("TaskTest_4 of Example-1");
         Test4.addTaskToList("TaskTest_4 of Example-2");
         Test4.addTaskToList("TaskTest_4 of Example-3");
+        Test4.onSaveList();
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(3);
     });
@@ -68,6 +72,7 @@ describe('Add to list', () => {
         Test5.addTaskToList("TaskTest_5 of Example-2");
         Test5.addTaskToList("TaskTest_5 of Example-3");
         Test5.addTaskToList("TaskTest_5 of Example-3");
+        Test5.onSaveList();
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(4);
     });
@@ -86,6 +91,7 @@ describe('Delete from list', () => {
         Test1.deleteTask(0);
         Test1.addTaskToList("TaskTest_1 of Example-3");
         Test1.deleteTask(1);
+        Test1.onSaveList();
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(1);
     });
@@ -99,6 +105,7 @@ describe('Delete from list', () => {
         const Test2 = new Application(true);
         Test2.addTaskToList("TaskTest_2 of Example-1");
         Test2.deleteTask(0);
+        Test2.onSaveList();
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(0);
     });
@@ -118,6 +125,7 @@ describe('Delete from list', () => {
         Test3.deleteTask(0);
         Test3.deleteTask(1);
         Test3.deleteTask(2);
+        Test3.onSaveList();
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(2);
     });
@@ -133,6 +141,7 @@ describe('Delete from list', () => {
         Test4.deleteTask(0);
         Test4.addTaskToList("TaskTest_4 of Example-2");
         Test4.addTaskToList("TaskTest_4 of Example-3");
+        Test4.onSaveList();
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(2);
     });
@@ -152,6 +161,7 @@ describe('Delete from list', () => {
         Test5.addTaskToList("TaskTest_5 of Example-3");
         Test5.deleteTask(0);
         Test5.addTaskToList("TaskTest_5 of Example-3");
+        Test5.onSaveList();
         
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(2);
