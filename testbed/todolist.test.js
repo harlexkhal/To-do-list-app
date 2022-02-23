@@ -7,11 +7,11 @@ describe('Add to list', () => {
         '  <ul class="todo-list"></ul>' +
         '</div>';
         
-        const Test1 = new Application(true);
-        Test1.addTaskToList("TaskTest_1 of Example 1");
-        Test1.addTaskToList("TaskTest_1 of Example-2");
-        Test1.addTaskToList("TaskTest_1 of Example-3");
-        Test1.onSaveList();
+        const Test = new Application(true);
+        Test.addTaskToList("TaskTest_1 of Example 1");
+        Test.addTaskToList("TaskTest_1 of Example-2");
+        Test.addTaskToList("TaskTest_1 of Example-3");
+        expect(Test.onSaveList()).not.toBeUndefined();
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(3);
     });
@@ -22,8 +22,8 @@ describe('Add to list', () => {
         '  <ul class="todo-list"></ul>' +
         '</div>';
         
-        const Test2 = new Application(true);
-        Test2.addTaskToList("TaskTest_2 of Example-1");
+        const Test = new Application(true);
+        Test.addTaskToList("TaskTest_2 of Example-1");
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(1);
     });
@@ -34,14 +34,14 @@ describe('Add to list', () => {
         '  <ul class="todo-list"></ul>' +
         '</div>';
         
-        const Test3 = new Application(true);
-        Test3.onLoadList();
-        Test3.addTaskToList("TaskTest_3 of Example-1");
-        Test3.addTaskToList("TaskTest_3 of Example-2");
-        Test3.addTaskToList("TaskTest_3 of EXample-3");
-        Test3.addTaskToList("TaskTest_3 of Example-4");
-        Test3.addTaskToList("TaskTest_3 of Example-5");
-        Test3.onSaveList();
+        const Test = new Application(true);
+        expect(Test.onLoadList()).not.toBeUndefined();
+        Test.addTaskToList("TaskTest_3 of Example-1");
+        Test.addTaskToList("TaskTest_3 of Example-2");
+        Test.addTaskToList("TaskTest_3 of EXample-3");
+        Test.addTaskToList("TaskTest_3 of Example-4");
+        Test.addTaskToList("TaskTest_3 of Example-5");
+        expect(Test.onSaveList()).not.toBeUndefined();
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(5);
     });
@@ -52,11 +52,11 @@ describe('Add to list', () => {
         '  <ul class="todo-list"></ul>' +
         '</div>';
         
-        const Test4 = new Application(true);
-        Test4.addTaskToList("TaskTest_4 of Example-1");
-        Test4.addTaskToList("TaskTest_4 of Example-2");
-        Test4.addTaskToList("TaskTest_4 of Example-3");
-        Test4.onSaveList();
+        const Test = new Application(true);
+        Test.addTaskToList("TaskTest_4 of Example-1");
+        Test.addTaskToList("TaskTest_4 of Example-2");
+        Test.addTaskToList("TaskTest_4 of Example-3");
+        expect(Test.onSaveList()).not.toBeUndefined();
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(3);
     });
@@ -67,12 +67,12 @@ describe('Add to list', () => {
         '  <ul class="todo-list"></ul>' +
         '</div>';
         
-        const Test5 = new Application(true);
-        Test5.addTaskToList("TaskTest_5 of Example-1");
-        Test5.addTaskToList("TaskTest_5 of Example-2");
-        Test5.addTaskToList("TaskTest_5 of Example-3");
-        Test5.addTaskToList("TaskTest_5 of Example-3");
-        Test5.onSaveList();
+        const Test = new Application(true);
+        Test.addTaskToList("TaskTest_5 of Example-1");
+        Test.addTaskToList("TaskTest_5 of Example-2");
+        Test.addTaskToList("TaskTest_5 of Example-3");
+        Test.addTaskToList("TaskTest_5 of Example-3");
+        expect(Test.onSaveList()).not.toBeUndefined();
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(4);
     });
@@ -85,13 +85,13 @@ describe('Delete from list', () => {
         '  <ul class="todo-list"></ul>' +
         '</div>';
         
-        const Test1 = new Application(true);
-        Test1.addTaskToList("TaskTest_1 of Example 1");
-        Test1.addTaskToList("TaskTest_1 of Example-2");
-        Test1.deleteTask(0);
-        Test1.addTaskToList("TaskTest_1 of Example-3");
-        Test1.deleteTask(1);
-        Test1.onSaveList();
+        const Test = new Application(true);
+        Test.addTaskToList("TaskTest_1 of Example 1");
+        Test.addTaskToList("TaskTest_1 of Example-2");
+        Test.deleteTask(0);
+        Test.addTaskToList("TaskTest_1 of Example-3");
+        Test.deleteTask(1);
+        expect(Test.onSaveList()).not.toBeUndefined();
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(1);
     });
@@ -102,10 +102,10 @@ describe('Delete from list', () => {
         '  <ul class="todo-list"></ul>' +
         '</div>';
         
-        const Test2 = new Application(true);
-        Test2.addTaskToList("TaskTest_2 of Example-1");
-        Test2.deleteTask(0);
-        Test2.onSaveList();
+        const Test = new Application(true);
+        Test.addTaskToList("TaskTest_2 of Example-1");
+        Test.deleteTask(0);
+        expect(Test.onSaveList()).not.toBeUndefined();
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(0);
     });
@@ -116,16 +116,16 @@ describe('Delete from list', () => {
         '  <ul class="todo-list"></ul>' +
         '</div>';
         
-        const Test3 = new Application(true);
-        Test3.addTaskToList("TaskTest_3 of Example-1");
-        Test3.addTaskToList("TaskTest_3 of Example-2");
-        Test3.addTaskToList("TaskTest_3 of EXample-3");
-        Test3.addTaskToList("TaskTest_3 of Example-4");
-        Test3.addTaskToList("TaskTest_3 of Example-5");
-        Test3.deleteTask(0);
-        Test3.deleteTask(1);
-        Test3.deleteTask(2);
-        Test3.onSaveList();
+        const Test = new Application(true);
+        Test.addTaskToList("TaskTest_3 of Example-1");
+        Test.addTaskToList("TaskTest_3 of Example-2");
+        Test.addTaskToList("TaskTest_3 of EXample-3");
+        Test.addTaskToList("TaskTest_3 of Example-4");
+        Test.addTaskToList("TaskTest_3 of Example-5");
+        Test.deleteTask(0);
+        Test.deleteTask(1);
+        Test.deleteTask(2);
+        expect(Test.onSaveList()).not.toBeUndefined();
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(2);
     });
@@ -136,12 +136,12 @@ describe('Delete from list', () => {
         '  <ul class="todo-list"></ul>' +
         '</div>';
         
-        const Test4 = new Application(true);
-        Test4.addTaskToList("TaskTest_4 of Example-1");
-        Test4.deleteTask(0);
-        Test4.addTaskToList("TaskTest_4 of Example-2");
-        Test4.addTaskToList("TaskTest_4 of Example-3");
-        Test4.onSaveList();
+        const Test = new Application(true);
+        Test.addTaskToList("TaskTest_4 of Example-1");
+        Test.deleteTask(0);
+        Test.addTaskToList("TaskTest_4 of Example-2");
+        Test.addTaskToList("TaskTest_4 of Example-3");
+        expect(Test.onSaveList()).not.toBeUndefined();
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(2);
     });
@@ -152,18 +152,133 @@ describe('Delete from list', () => {
         '  <ul class="todo-list"></ul>' +
         '</div>';
         
-        const Test5 = new Application(true);
-        Test5.deleteTask(0);
-        Test5.addTaskToList("TaskTest_5 of Example-1");
-        Test5.deleteTask(0);
-        Test5.addTaskToList("TaskTest_5 of Example-2");
-        Test5.deleteTask(10);
-        Test5.addTaskToList("TaskTest_5 of Example-3");
-        Test5.deleteTask(0);
-        Test5.addTaskToList("TaskTest_5 of Example-3");
-        Test5.onSaveList();
+        const Test = new Application(true);
+        Test.deleteTask(0);
+        Test.addTaskToList("TaskTest_5 of Example-1");
+        Test.deleteTask(0);
+        Test.addTaskToList("TaskTest_5 of Example-2");
+        Test.deleteTask(10);
+        Test.addTaskToList("TaskTest_5 of Example-3");
+        Test.deleteTask(0);
+        Test.addTaskToList("TaskTest_5 of Example-3");
+        expect(Test.onSaveList()).not.toBeUndefined();
         
         const list = document.querySelectorAll('.todo-list li');
         expect(list).toHaveLength(2);
+    });
+});
+
+describe('Edit Task Description', () => {
+    test('Test case 11', () => {
+        const Test = new Application(true);
+        Test.addTaskToList("TaskTest_1 of Example 1");
+        Test.addTaskToList("TaskTest_1 of Example-2");
+        Test.deleteTask(0);
+        Test.addTaskToList("TaskTest_1 of Example-3");
+        Test.deleteTask(1);
+        expect(Test.onSaveList()).not.toBeUndefined();
+        const newDescription = "This particular value has changed";
+
+        expect(Test.editTaskList(0, newDescription)).toEqual(newDescription);
+    });
+
+    test('Test case 12', () => {
+        const Test = new Application(true);
+        expect(Test.onLoadList()).not.toBeUndefined();
+        Test.addTaskToList("TaskTest_1 of Example 1");
+        Test.addTaskToList("TaskTest_1 of Example-2");
+        Test.addTaskToList("TaskTest_1 of Example-3");
+        expect(Test.onSaveList()).not.toBeUndefined();
+        const newDescription = "This is a good edge test case";
+
+        expect(Test.editTaskList(2, newDescription)).toEqual(newDescription);
+    });
+
+    test('Test case 13', () => {
+        const Test = new Application(true);
+        Test.addTaskToList("TaskTest_1 of Example 1");
+        Test.addTaskToList("TaskTest_1 of Example-2");
+        Test.deleteTask(1);
+        Test.addTaskToList("TaskTest_1 of Example-3");
+        expect(Test.onSaveList()).not.toBeUndefined();
+        const newDescription = "UAT Test debug chips";
+
+        expect(Test.editTaskList(0, newDescription)).toEqual(newDescription);
+    });
+});
+
+describe('Update Task Completed Status', () => {
+    test('Test case 14', () => {
+        const Test = new Application(true);
+        Test.addTaskToList("TaskTest_1 of Example 1");
+        Test.addTaskToList("TaskTest_1 of Example-2");
+        Test.deleteTask(0);
+        Test.addTaskToList("TaskTest_1 of Example-3");
+        Test.deleteTask(1);
+        expect(Test.onSaveList()).not.toBeUndefined();
+
+        expect(Test.checkTask(0, true)).toBeFalsy();
+    });
+
+    test('Test case 15', () => {
+        const Test = new Application(true);
+        expect(Test.onLoadList()).not.toBeUndefined();
+        Test.addTaskToList("TaskTest_1 of Example 1");
+        Test.addTaskToList("TaskTest_1 of Example-2");
+        Test.addTaskToList("TaskTest_1 of Example-3");
+        expect(Test.onSaveList()).not.toBeUndefined();
+
+        expect(Test.checkTask(2, false)).toBeTruthy();
+    });
+
+    test('Test case 16', () => {
+        const Test = new Application(true);
+        Test.addTaskToList("TaskTest_1 of Example 1");
+        Test.addTaskToList("TaskTest_1 of Example-2");
+        Test.deleteTask(1);
+        Test.addTaskToList("TaskTest_1 of Example-3");
+        expect(Test.onSaveList()).not.toBeUndefined();
+        
+        expect(Test.checkTask(0, true)).toBeFalsy();
+    });
+});
+
+describe('Clear All Completed Tasks', () => {
+    test('Test case 17', () => {
+        const Test = new Application(true);
+        Test.addTaskToList("TaskTest_1 of Example 1");
+        Test.addTaskToList("TaskTest_1 of Example-2");
+        Test.deleteTask(0);
+        Test.addTaskToList("TaskTest_1 of Example-3");
+        Test.deleteTask(1);
+        expect(Test.onSaveList()).not.toBeUndefined();
+
+        Test.checkTask(0, true);
+        expect(Test.clearAllChecked()).toBeTruthy();
+    });
+
+    test('Test case 18', () => {
+        const Test = new Application(true);
+        expect(Test.onLoadList()).not.toBeUndefined();
+        Test.addTaskToList("TaskTest_1 of Example 1");
+        Test.addTaskToList("TaskTest_1 of Example-2");
+        Test.addTaskToList("TaskTest_1 of Example-3");
+        expect(Test.onSaveList()).not.toBeUndefined();
+
+        Test.checkTask(2, true);
+        Test.checkTask(0, true);
+        expect(Test.clearAllChecked()).toBeTruthy();
+    });
+
+    test('Test case 19', () => {
+        const Test = new Application(true);
+        Test.addTaskToList("TaskTest_1 of Example 1");
+        Test.addTaskToList("TaskTest_1 of Example-2");
+        Test.deleteTask(1);
+        Test.addTaskToList("TaskTest_1 of Example-3");
+        expect(Test.onSaveList()).not.toBeUndefined();
+        
+        Test.checkTask(0, true);
+        expect(Test.clearAllChecked()).toBeTruthy();
     });
 });

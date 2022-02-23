@@ -36,6 +36,35 @@ class Application {
     this.updateDom();
   }
 
+  editTaskList = (index, word) => {
+    if (index < this.todoList.length) {
+      this.todoList[index].description = word;
+      this.onSaveList();
+    }
+
+    return this.todoList[index].description;
+  }
+
+  checkTask = (index, status) => {
+    if (index < this.todoList.length) {
+      this.todoList[index].completed = !status;
+      this.onSaveList();
+    }
+
+    return this.todoList[index].completed;
+  }
+
+  clearAllChecked = () => {
+    const filteredTasks = this.todoList.filter((item) => {
+      const state = item.completed === false;
+      return state;
+    });
+    this.todoList = filteredTasks;
+    this.onSaveList();
+
+    return this.todoList === filteredTasks;
+  }
+
   updateDom = () => {
     const ref = this;
     this.domList.innerHTML = '';
@@ -88,12 +117,7 @@ class Application {
     checks.forEach((check, index) => {
       check.addEventListener('click', (event) => {
         const refObj = event.currentTarget;
-        if (refObj.ref.todoList[refObj.index].completed) {
-          refObj.ref.todoList[refObj.index].completed = false;
-        } else {
-          refObj.ref.todoList[refObj.index].completed = true;
-        }
-        refObj.ref.onSaveList();
+        this.checkTask(refObj.index, refObj.ref.todoList[refObj.index].completed);
         ref.updateDom();
       });
       check.index = index;
@@ -102,14 +126,8 @@ class Application {
 
     // clear all completed
     const clearBtn = document.querySelector('.custom-btn');
-    clearBtn.addEventListener('click', (event) => {
-      const refObj = event.currentTarget;
-      const filteredTasks = refObj.ref.todoList.filter((item) => {
-        const state = item.completed === false;
-        return state;
-      });
-      refObj.ref.todoList = filteredTasks;
-      refObj.ref.onSaveList();
+    clearBtn.addEventListener('click', () => {
+      this.clearAllChecked();
       ref.updateDom();
     });
     clearBtn.ref = this;
@@ -155,11 +173,18 @@ class Application {
 
         if (refObj.value.innerHTML !== refObj.ref.todoList[refObj.index].description) {
           refObj.value.innerHTML = input.replace('<br>', '');
-          refObj.ref.todoList[refObj.index].description = refObj.value.innerHTML;
-          refObj.ref.onSaveList();
+          this.editTaskList(refObj.index, refObj.value.innerHTML);
           refObj.value.blur();
         }
       });
+
+      desc.addEventListener('focusout', (event) => {
+        const refObj = event.currentTarget;
+        if (refObj.value.innerHTML !== refObj.ref.todoList[refObj.index].description) {
+          this.editTaskList(refObj.index, refObj.value.innerHTML);
+        }
+      });
+
       desc.index = index;
       desc.ref = ref;
       desc.value = desc;
@@ -170,6 +195,8 @@ class Application {
     if (this.testMode === false) {
       localStorage.setItem(this.localStorageStringInstance, JSON.stringify(this.todoList));
     }
+
+    return this.todoList;
   }
 
   onLoadList = () => {
@@ -178,6 +205,8 @@ class Application {
         this.todoList = JSON.parse(localStorage.getItem(this.localStorageStringInstance));
       }
     }
+
+    return this.todoList;
   }
 }
 

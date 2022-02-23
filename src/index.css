@@ -55,5 +55,9 @@ div.checker {
 }
 
 [contenteditable] {
-  outline: 1px solid transparent;
+  padding: 10px;
+}
+
+[contenteditable]:focus {
+  outline: 2px solid purple;
 }
